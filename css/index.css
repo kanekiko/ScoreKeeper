@@ -1,0 +1,329 @@
+    body {
+      font-family: 'Poppins', sans-serif;
+      /* Police principale plus moderne */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to right bottom, #a7e6ff, #d1eaff);
+      /* Dégradé de fond doux */
+      margin: 0;
+      padding: 20px;
+      /* Ajoute un peu de padding pour les petits écrans */
+      box-sizing: border-box;
+      /* Inclut padding et border dans la largeur/hauteur */
+    }
+
+    .compteur {
+      /* Ancien: boite-compteur */
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #ffffff;
+      border-radius: 0.5rem;
+      /* Réduit à 8px pour une courbure subtile */
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      /* shadow-2xl */
+      overflow: hidden;
+      transform: scale(1);
+      transition: all 0.3s ease-in-out;
+      max-width: 480px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .compteur:hover {
+      transform: scale(1.05);
+    }
+
+    .entete {
+      /* Ancien: entete-image */
+      position: relative;
+      width: 100%;
+      height: 160px;
+      /* h-40 */
+      background: linear-gradient(to right, #60a5fa, #a855f7);
+      /* from-blue-400 to-purple-500 */
+      display: flex;
+      /* Utilisé pour centrer le titre */
+      align-items: center;
+      /* Centrage vertical du titre */
+      justify-content: center;
+      /* Centrage horizontal du titre */
+      overflow: hidden;
+    }
+
+    .entete img {
+      position: absolute;
+      /* Positionne l'image en arrière-plan */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      filter: grayscale(50%);
+      z-index: 0;
+      /* Assure que l'image est derrière le titre et l'overlay */
+    }
+
+    .entete::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+      z-index: 1;
+      /* Assure que l'overlay est entre l'image et le titre */
+    }
+
+    .titre {
+      /* Ancien: titre-compteur */
+      position: relative;
+      /* Garde le titre au-dessus de l'overlay */
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.5rem;
+      /* text-2xl */
+      font-weight: 700;
+      /* font-bold */
+      padding: 1rem;
+      /* p-4 */
+      z-index: 20;
+      /* Assure que le titre est au-dessus de tout */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .scores {
+      /* Ancien: zone-score */
+      padding: 1.25rem 1.5rem;
+      /* px-6 py-5 */
+      background-color: #ffffff;
+      border-bottom-left-radius: 0.5rem;
+      /* Adapte aux coins de la carte principale */
+      border-bottom-right-radius: 0.5rem;
+      /* Adapte aux coins de la carte principale */
+    }
+
+    .affichage {
+      /* Ancien: affichage-score */
+      font-size: 4.5rem;
+      /* text-7xl */
+      font-weight: 800;
+      /* font-extrabold */
+      text-align: center;
+      margin-bottom: 1rem;
+      /* mb-4 */
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .affichage span {
+      color: #2563eb;
+      /* blue-600 */
+      transition: color 0.3s ease-in-out;
+    }
+
+    .instruction {
+      /* Ancien: texte-instruction */
+      text-align: center;
+      color: #6b7280;
+      /* gray-500 */
+      margin-bottom: 1.5rem;
+      /* mb-6 */
+      font-size: 1rem;
+      /* text-base */
+    }
+
+    .saisie-groupe {
+      /* Ancien: controles-saisie */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      /* mb-8 */
+    }
+
+    .saisie-groupe span {
+      font-weight: 500;
+      /* font-medium */
+      color: #374151;
+      /* gray-700 */
+      font-size: 1.125rem;
+      /* text-lg */
+      margin-right: 1rem;
+      /* mr-4 */
+    }
+
+    #cible {
+      /* Ancien: #saisie-cible */
+      border: 2px solid #93c5fd;
+      /* border-blue-300 */
+      border-radius: 0.25rem;
+      /* Réduit à 4px pour un aspect plus carré */
+      padding: 0.5rem 1.25rem;
+      /* px-5 py-2 */
+      text-align: center;
+      color: #1f2937;
+      /* gray-800 */
+      outline: none;
+      box-shadow: none;
+      /* Supprime l'ombre par défaut */
+      transition: all 0.3s ease-in-out;
+      width: 100px;
+      font-size: 1.1em;
+    }
+
+    #cible:focus {
+      border-color: #3b82f6;
+      /* blue-500 */
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+      /* ring-2 ring-blue-500 */
+    }
+
+    .boutons {
+      /* Ancien: zone-boutons */
+      display: flex;
+      flex-direction: column;
+      /* flex-col */
+      justify-content: center;
+      padding: 2rem;
+      /* Augmenté de 1.5rem à 2rem pour plus d'espace autour */
+      gap: 0.75rem;
+      /* Réduit l'espace vertical entre les boutons */
+      background-color: #f8f9fa;
+      border-top: 1px solid #eee;
+    }
+
+    .boutons button {
+      border-radius: 0.25rem;
+      /* Réduit à 4px pour un aspect plus carré */
+      padding: 0.75rem 1.5rem;
+      /* Réduit le padding des boutons */
+      font-weight: 600;
+      /* font-semibold */
+      color: #ffffff;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      /* shadow-lg */
+      transition: all 0.3s ease-in-out;
+      transform: translateY(0);
+      min-width: 120px;
+      /* Réduit la largeur minimale des boutons */
+      letter-spacing: 0.05em;
+      border: none;
+      /* Assure qu'il n'y a pas de bordure par défaut */
+      outline: none;
+      /* Supprime l'outline au focus */
+      display: flex;
+      align-items: center;
+      /* Centrage vertical */
+      justify-content: center;
+      /* Centrage horizontal */
+      text-align: center;
+      /* Assure le centrage du texte sur plusieurs lignes si le padding est très grand */
+    }
+
+    .boutons button:hover {
+      transform: translateY(-4px);
+      /* hover:-translate-y-1 */
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      /* hover:shadow-xl */
+    }
+
+    .btn-style-1 {
+      /* Ancien: bouton-style-un */
+      background-image: linear-gradient(to bottom right, #4ade80, #16a34a);
+      /* from-green-400 to-green-600 */
+    }
+
+    .btn-style-1:hover {
+      background-image: linear-gradient(to bottom right, #22c55e, #15803d);
+      /* hover:from-green-500 hover:to-green-700 */
+    }
+
+    .btn-style-2 {
+      /* Ancien: bouton-style-deux */
+      background-image: linear-gradient(to bottom right, #6366f1, #2563eb);
+      /* from-indigo-500 to-blue-600 */
+    }
+
+    .btn-style-2:hover {
+      background-image: linear-gradient(to bottom right, #4f46e5, #1d4ed8);
+      /* hover:from-indigo-600 hover:to-blue-700 */
+    }
+
+    .btn-style-reset {
+      /* Ancien: bouton-style-reset */
+      background-image: linear-gradient(to bottom right, #ef4444, #b91c1c);
+      /* from-red-500 to-red-700 */
+    }
+
+    .btn-style-reset:hover {
+      background-image: linear-gradient(to bottom right, #dc2626, #991b1b);
+      /* hover:from-red-600 hover:to-red-800 */
+    }
+
+    .disabled {
+      opacity: 0.4 !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .gagnant {
+      /* Ancien: score-gagnant */
+      color: #28a745 !important;
+      font-weight: bold;
+      animation: pulseGreen 0.7s infinite alternate;
+    }
+
+    .perdant {
+      /* Ancien: score-perdant */
+      color: #dc3545 !important;
+      font-weight: bold;
+      animation: pulseRed 0.7s infinite alternate;
+    }
+
+    /* Animations subtiles pour les scores gagnants/perdants */
+    @keyframes pulseGreen {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes pulseRed {
+      from {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+    }
+
+    /* Media Queries pour la responsivité */
+    @media (min-width: 640px) {
+
+      /* sm:breakpoint */
+      .boutons {
+        flex-direction: row;
+        /* sm:flex-row */
+        gap: 0;
+        /* Réinitialise le gap vertical */
+        margin-left: 0;
+        /* Réinitialise les marges automatiques */
+        margin-right: 0;
+        column-gap: 1rem;
+        /* sm:space-x-4 */
+      }
+    }
