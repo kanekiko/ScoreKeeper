@@ -34,3 +34,13 @@ const enableButtons = () => {
   scoreDeux.classList.remove("gagnant");
   isGameOver = false;
 };
+
+const resetGame = () => {
+  currentScoreOne = 0;
+  currentScoreTwo = 0;
+  updateScoreDisplay();
+  enableButtons();
+  saisieCible.value = "7";
+  targetScore = 7;
+};
+
